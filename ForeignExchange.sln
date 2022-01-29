@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForeignExchange", "ForeignExchange\ForeignExchange.csproj", "{89F047FF-CA62-4103-808F-8F44D55C5FDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89F047FF-CA62-4103-808F-8F44D55C5FDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89F047FF-CA62-4103-808F-8F44D55C5FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89F047FF-CA62-4103-808F-8F44D55C5FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89F047FF-CA62-4103-808F-8F44D55C5FDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0802A88-F0C5-45C6-A598-34E3022AE8DC}
+	EndGlobalSection
+EndGlobal
