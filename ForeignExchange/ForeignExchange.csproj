@@ -15,6 +15,7 @@
     <None Remove="Repositories\Extension\" />
     <None Remove="Repositories\Interfaces\" />
     <None Remove="Models\Projections\" />
+    <None Remove="Hubs\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
@@ -23,6 +24,7 @@
     <Folder Include="Repositories\Extension\" />
     <Folder Include="Repositories\Interfaces\" />
     <Folder Include="Models\Projections\" />
+    <Folder Include="Hubs\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
