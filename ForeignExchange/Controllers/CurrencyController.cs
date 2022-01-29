@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ForeignExchange.Hubs;
-using ForeignExchange.Models;
-using ForeignExchange.Models.Projections;
 using ForeignExchange.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;

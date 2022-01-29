@@ -1,7 +1,7 @@
 ﻿using System;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace ForeignExchange.Models
+namespace ExchangeModels
 {
     public class Currency
     {

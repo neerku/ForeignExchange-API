@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ForeignExchange.Models;
-using ForeignExchange.Models.Projections;
+using ExchangeModels;
+using ExchangeModels.Projections;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -17,7 +17,7 @@ namespace ForeignExchange.Repositories
         {
             mongoClient = client;
             mongoCollection = mongoClient.GetDatabase(APIConstant.CurrencyDatabase)
-                .GetCollection<Models.CurrencyTS>(APIConstant.CurrencyTSCollection);
+                .GetCollection<CurrencyTS>(APIConstant.CurrencyTSCollection);
         }
 
         public async Task<List<CurrencyCandlestick>> GetDataAsync(string fromAndTocurrency)
