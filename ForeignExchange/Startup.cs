@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ForeignExchange.Hubs;
+﻿
 using ForeignExchange.Repositories.Extension;
+using ForeignExchange.SignalR.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace ForeignExchange
 {
@@ -29,13 +23,16 @@ namespace ForeignExchange
         {
             services.AddCors();
             services.AddSignalR();
-            var mongoUri = this.Configuration.GetValue<string>("MongoUri");
-            services.AddDataAccessServices(mongoUri);
+            var mongoUri = Configuration.GetValue<string>("MongoUri");
+            services.AddDataAccessServicesAsync(mongoUri);
             services.AddControllers();
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

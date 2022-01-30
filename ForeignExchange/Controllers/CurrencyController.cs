@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ForeignExchange.Hubs;
+using ExchangeModels;
 using ForeignExchange.Repositories;
+using ForeignExchange.SignalR.Hubs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using MongoDB.Bson;
@@ -34,8 +35,24 @@ namespace ForeignExchange.Controllers
         {
             var currencyString = $"{basecode}-{convertedcode}";
             var data = await _currencyTSRepository.GetDataAsync(currencyString);
-            await _hub.Clients.All.SendAsync("transferredData", data);
             return Ok(data);
+        }
+
+        [HttpGet]
+        [Route("candle/subscription")]
+        public ActionResult StartSendingCandlestickDataToclientsAsync()
+        {
+            Task.Run(() => SendData());
+            return Ok();
+        }
+
+        private async Task SendData()
+        {
+            while (true)
+            {
+                var data2 = await _currencyTSRepository.GetDataAsync(Constants.CurrencySymbol);
+                await _hub.Clients.All.SendAsync("BTCToCurrencyCandle", data2[0]);
+            }
         }
     }
 }
