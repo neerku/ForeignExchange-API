@@ -39,7 +39,7 @@ namespace ExchangeDataGenerator.Generator
                         switch (symbol)
                         {
                             case "BTC-USD":
-                                price = GetRandomDouble(random, 39000.00, 37000.00);
+                                price = GetRandomDouble(random, 34000.5463, 37000.00);
                                 break;
                             case "BTC-GBP":
                                 price = GetRandomDouble(random, 25000.00, 35000.00);

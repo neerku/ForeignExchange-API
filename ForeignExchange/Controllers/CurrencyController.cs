@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using ExchangeModels;
 using ForeignExchange.Repositories;
@@ -34,8 +35,8 @@ namespace ForeignExchange.Controllers
         public async Task<ActionResult> GetCandlestickData(string basecode, string convertedcode)
         {
             var currencyString = $"{basecode}-{convertedcode}";
-            var data = await _currencyTSRepository.GetDataAsync(currencyString);
-            return Ok(data);
+            //var data = await _currencyTSRepository.GetDataAsync(currencyString);
+            return Ok(currencyString);
         }
 
         [HttpGet]
@@ -51,7 +52,9 @@ namespace ForeignExchange.Controllers
             while (true)
             {
                 var data2 = await _currencyTSRepository.GetDataAsync(Constants.CurrencySymbol);
-                await _hub.Clients.All.SendAsync("BTCToCurrencyCandle", data2[0]);
+                await _hub.Clients.All.SendAsync("BTCToCurrencyCandle", data2);
+                await _hub.Clients.All.SendAsync("BTCToCurrencyCandle-2", data2[0]);
+                Thread.Sleep(2000);
             }
         }
     }

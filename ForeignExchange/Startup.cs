@@ -1,4 +1,5 @@
 ﻿
+using ForeignExchange.BackgroundServices;
 using ForeignExchange.Repositories.Extension;
 using ForeignExchange.SignalR.Hubs;
 using Microsoft.AspNetCore.Builder;

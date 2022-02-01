@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using ExchangeDataGenerator.Generator;
+using ExchangeModels;
 using ForeignExchange.SignalR;
 using ForeignExchange.SignalR.Hubs;
 using Microsoft.AspNetCore.SignalR;
@@ -13,7 +14,7 @@ namespace ForeignExchange.Repositories.Extension
     public static class ServiceExtension
     {
         public static MongoClient client;
-        public static void AddDataAccessServicesAsync(this IServiceCollection services, string mongoUri)
+        public static async Task AddDataAccessServicesAsync(this IServiceCollection services, string mongoUri)
         {
             client = new MongoClient(mongoUri);
             services.AddSingleton<IMongoClient, MongoClient>(s =>
@@ -28,50 +29,17 @@ namespace ForeignExchange.Repositories.Extension
             ServiceProvider serviceProvider = services.BuildServiceProvider();
             var currencyTSRepository = serviceProvider.GetService<CurrencyTSRepository>();
             var abc= serviceProvider.GetService<SendData>();
+
             var generateBTC = new BTCCurrencyTimeSeries(client);
             
             Task.Run(() => generateBTC.GenerateBTCCurrencyData());
-            //Task.Run(() => abc.StartSendingCandlestickDataToclients());
+            Task.Run(() => abc.StartSendingCandlestickDataToclients());
 
-            //await generateBTC.GenerateBTCCurrencyData();
-            //await sendDataToClient.StartSendingCandlestickDataToclients();
-
+            
 
 
 
-
-
-        }
-
-        //public static async Task AddDataAccessServicesAsync(this IServiceCollection services, string mongoUri)
-        //{
-        //    client = new MongoClient(mongoUri);
-        //    services.AddSingleton<IMongoClient, MongoClient>(s =>
-        //    {
-        //        return client;
-        //    });
-
-        //    services.AddSingleton<CurrencyRepository>();
-        //    services.AddSingleton<CurrencyTSRepository>();
-
-
-        //    ServiceProvider serviceProvider = services.BuildServiceProvider();
-        //    var currencyTSRepository = serviceProvider.GetService<CurrencyTSRepository>();
-        //    var generateBTC = new BTCCurrencyTimeSeries(client);
-        //    var sendDataToClient = new SendData(currencyTSRepository);
-
-        //    Task.Run(() => generateBTC.GenerateBTCCurrencyData());
-        //    Task.Run(() => generateBTC.GenerateBTCCurrencyData());
-
-        //    //await generateBTC.GenerateBTCCurrencyData();
-        //    //await sendDataToClient.StartSendingCandlestickDataToclients();
-
-
-
-
-
-
-        //}
+        } 
 
     }
 }

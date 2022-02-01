@@ -84,7 +84,13 @@ namespace ForeignExchange.Repositories
             currencyArray.AddRange(currencyList);
 
             var matchStage = new BsonDocument("$match",
-                new BsonDocument("symbol", new BsonDocument("$in",currencyArray)));
+    new BsonDocument
+        {
+            { "symbol", "BTC-USD" },
+            { "time",
+    new BsonDocument("$gte",
+    new DateTime(2022, 1, 30, 12, 30, 46)) }
+        });
 
             var groupStage = new BsonDocument("$group",
                 new BsonDocument
@@ -119,7 +125,8 @@ namespace ForeignExchange.Repositories
             {
                 matchStage,
                 groupStage,
-                sortStage
+                sortStage,
+                new BsonDocument("$limit", 1000)
 
             };
 
