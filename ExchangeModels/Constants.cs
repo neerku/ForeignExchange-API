@@ -3,20 +3,6 @@ namespace ExchangeModels
 {
     public class Constants
     {
-        //#region Databases
-        //public const string CurrencyDatabase = "foreign_exchange";
-
-        //#endregion
-
-        //#region Collections
-
-        //public const string CurrencyCollection = "currency";
-        //public const string CurrencyTSCollection = "ts_currency";
-
-        //#endregion
-
-
-
         #region Databases
         public const string CurrencyDatabase = "exchange";
 

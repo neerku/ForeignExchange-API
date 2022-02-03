@@ -1,5 +1,4 @@
 ﻿
-using ForeignExchange.BackgroundServices;
 using ForeignExchange.Repositories.Extension;
 using ForeignExchange.SignalR.Hubs;
 using Microsoft.AspNetCore.Builder;
@@ -62,7 +61,7 @@ namespace ForeignExchange
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<CurrencyCandlestickHub>("/chat");
+                endpoints.MapHub<CurrencyHub>("/exchange");
             });
 
            

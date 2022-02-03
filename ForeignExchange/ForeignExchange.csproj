@@ -16,7 +16,6 @@
     <None Remove="SignalR\" />
     <None Remove="SignalR\Hubs\" />
     <None Remove="SignalR\Subscriptions \" />
-    <None Remove="BackgroundServices\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
@@ -26,7 +25,6 @@
     <Folder Include="SignalR\" />
     <Folder Include="SignalR\Hubs\" />
     <Folder Include="SignalR\Subscriptions \" />
-    <Folder Include="BackgroundServices\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />

@@ -39,37 +39,37 @@ namespace ExchangeDataGenerator.Generator
                         switch (symbol)
                         {
                             case "BTC-USD":
-                                price = GetRandomDouble(random, 34000.5463, 37000.00);
+                                price = GetRandomDouble(random, 36000.5463, 37000.00);
                                 break;
                             case "BTC-GBP":
-                                price = GetRandomDouble(random, 25000.00, 35000.00);
+                                price = GetRandomDouble(random, 34000.00, 35000.00);
                                 break;
                             case "BTC-INR":
-                                price = GetRandomDouble(random, 250000.00, 300000.00);
+                                price = GetRandomDouble(random, 290000.00, 300000.00);
                                 break;
                             case "BTC-KYD":
-                                price = GetRandomDouble(random, 29000.00, 40000.00);
+                                price = GetRandomDouble(random, 39000.00, 40000.00);
                                 break;
                             case "BTC-AUD":
-                                price = GetRandomDouble(random, 48819.00, 70000.00);
+                                price = GetRandomDouble(random, 69000.00, 70000.00);
                                 break;
                             case "BTC-CNY":
-                                price = GetRandomDouble(random, 222000.00, 300000.00);
+                                price = GetRandomDouble(random, 290000.00, 300000.00);
                                 break;
                             case "BTC-NZD":
-                                price = GetRandomDouble(random, 52154.00, 65000.00);
+                                price = GetRandomDouble(random, 64154.00, 65000.00);
                                 break;
                             case "BTC-EUR":
-                                price = GetRandomDouble(random, 30000.00, 40000.00);
+                                price = GetRandomDouble(random, 39000.00, 40000.00);
                                 break;
                             case "BTC-SGD":
-                                price = GetRandomDouble(random, 45000.00, 60000.00);
+                                price = GetRandomDouble(random, 59000.00, 60000.00);
                                 break;
                             case "BTC-BRL":
-                                price = GetRandomDouble(random, 191000.00, 250000.00);
+                                price = GetRandomDouble(random, 241000.00, 250000.00);
                                 break;
                             default:
-                                price = GetRandomDouble(random, 191000.00, 250000.00);
+                                price = GetRandomDouble(random, 241000.00, 250000.00);
                                 break;
                         }
                         document.SetElement(new BsonElement("price", price));
