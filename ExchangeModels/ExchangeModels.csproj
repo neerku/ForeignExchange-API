@@ -5,12 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Projections\" />
     <None Remove="MongoDB.Bson" />
     <None Remove="MongoDB.Driver.Core" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Projections\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MongoDB.Bson" Version="2.14.1" />
