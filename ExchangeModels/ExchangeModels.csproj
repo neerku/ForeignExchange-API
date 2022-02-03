@@ -12,4 +12,8 @@
     <PackageReference Include="MongoDB.Bson" Version="2.14.1" />
     <PackageReference Include="MongoDB.Driver.Core" Version="2.14.1" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Projections\CurrencyCandlestick.cs" />
+    <Compile Remove="Projections\CurrencyEMA.cs" />
+  </ItemGroup>
 </Project>
