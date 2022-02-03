@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-using ExchangeModels;
+﻿using ExchangeModels;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ExchangeDataGenerator.Generator
 {
     public class BTCCurrencyTimeSeries
     {
-        
         private readonly IMongoCollection<BsonDocument> currencyCollection;
         private readonly IMongoClient mongoClient;
 
@@ -20,6 +18,13 @@ namespace ExchangeDataGenerator.Generator
             mongoClient = client;
             currencyCollection = mongoClient.GetDatabase(Constants.CurrencyDatabase)
                 .GetCollection<BsonDocument>(Constants.CurrencyCollection);
+        }
+
+        public static double GetRandomDouble(Random random, double minimum, double maximum)
+        {
+            var randomDouble = random.NextDouble() * (maximum - minimum) + minimum;
+            var roundedDouble = Math.Round(randomDouble, 4, MidpointRounding.AwayFromZero);
+            return roundedDouble;
         }
 
         public async Task GenerateBTCCurrencyData()
@@ -41,33 +46,43 @@ namespace ExchangeDataGenerator.Generator
                             case "BTC-USD":
                                 price = GetRandomDouble(random, 36000.5463, 37000.00);
                                 break;
+
                             case "BTC-GBP":
                                 price = GetRandomDouble(random, 34000.00, 35000.00);
                                 break;
+
                             case "BTC-INR":
                                 price = GetRandomDouble(random, 290000.00, 300000.00);
                                 break;
+
                             case "BTC-KYD":
                                 price = GetRandomDouble(random, 39000.00, 40000.00);
                                 break;
+
                             case "BTC-AUD":
                                 price = GetRandomDouble(random, 69000.00, 70000.00);
                                 break;
+
                             case "BTC-CNY":
                                 price = GetRandomDouble(random, 290000.00, 300000.00);
                                 break;
+
                             case "BTC-NZD":
                                 price = GetRandomDouble(random, 64154.00, 65000.00);
                                 break;
+
                             case "BTC-EUR":
                                 price = GetRandomDouble(random, 39000.00, 40000.00);
                                 break;
+
                             case "BTC-SGD":
                                 price = GetRandomDouble(random, 59000.00, 60000.00);
                                 break;
+
                             case "BTC-BRL":
                                 price = GetRandomDouble(random, 241000.00, 250000.00);
                                 break;
+
                             default:
                                 price = GetRandomDouble(random, 241000.00, 250000.00);
                                 break;
@@ -86,16 +101,6 @@ namespace ExchangeDataGenerator.Generator
             {
                 Console.WriteLine(ex);
             }
-            
         }
-
-        public static double GetRandomDouble(Random random, double minimum, double maximum)
-        {
-            var randomDouble = random.NextDouble() * (maximum - minimum) + minimum;
-            var roundedDouble = Math.Round(randomDouble, 4, MidpointRounding.AwayFromZero);
-            return roundedDouble;
-        }
-
-        
     }
 }

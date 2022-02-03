@@ -1,5 +1,4 @@
-﻿
-using ForeignExchange.Repositories.Extension;
+﻿using ForeignExchange.Repositories.Extension;
 using ForeignExchange.SignalR.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,21 +17,6 @@ namespace ForeignExchange
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddCors();
-            services.AddSignalR();
-            var mongoUri = Configuration.GetValue<string>("MongoUri");
-            services.AddDataAccessServicesAsync(mongoUri);
-            services.AddControllers();
-
-
-
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -41,7 +25,7 @@ namespace ForeignExchange
             }
             else
             {
-                // check  https://aka.ms/aspnetcore-hsts.
+                // check https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -63,8 +47,19 @@ namespace ForeignExchange
                 endpoints.MapControllers();
                 endpoints.MapHub<CurrencyHub>("/exchange");
             });
-
-           
         }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddCors();
+            services.AddSignalR();
+            var mongoUri = Configuration.GetValue<string>("MongoUri");
+            services.AddDataAccessServicesAsync(mongoUri);
+            services.AddControllers();
+            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     }
 }

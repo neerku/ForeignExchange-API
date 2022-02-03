@@ -1,5 +1,4 @@
-﻿using System;
-using ExchangeModels;
+﻿using ExchangeModels;
 using MongoDB.Driver;
 
 namespace ForeignExchange.Repositories

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using ExchangeModels;
+﻿using ExchangeModels;
 using ForeignExchange.Repositories;
 using ForeignExchange.SignalR.Hubs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using System.Threading;
+using System.Threading.Tasks;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,12 +14,11 @@ namespace ForeignExchange.Controllers
     [ApiController]
     public class CurrencyController : ControllerBase
     {
+        private static bool IsSubscriptionRunning = false;
         private readonly CurrencyTSRepository _currencyTSRepository;
         private readonly IHubContext<CurrencyHub> _hub;
-        private static bool IsSubscriptionRunning = false;
 
-
-        public CurrencyController(CurrencyTSRepository currencyTSRepository,IHubContext<CurrencyHub> hub)
+        public CurrencyController(CurrencyTSRepository currencyTSRepository, IHubContext<CurrencyHub> hub)
         {
             _currencyTSRepository = currencyTSRepository;
             _hub = hub;

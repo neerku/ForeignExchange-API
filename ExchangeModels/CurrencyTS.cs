@@ -1,5 +1,5 @@
-﻿using System;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 
 namespace ExchangeModels
 {
@@ -15,13 +15,13 @@ namespace ExchangeModels
             set { this._id = value; }
         }
 
-        [BsonElement("time")]
-        public DateTime Time { get; set; }
+        [BsonElement("price")]
+        public double Price { get; set; }
 
         [BsonElement("symbol")]
         public string Symbol { get; set; }
 
-        [BsonElement("price")]
-        public double Price { get; set; }
+        [BsonElement("time")]
+        public DateTime Time { get; set; }
     }
 }

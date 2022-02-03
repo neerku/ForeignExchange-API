@@ -1,5 +1,4 @@
-﻿using System;
-namespace ForeignExchange
+﻿namespace ForeignExchange
 {
     public class APIConstant
     {
@@ -15,19 +14,17 @@ namespace ForeignExchange
 
         //#endregion
 
-
-
         #region Databases
+
         public const string CurrencyDatabase = "exchange";
 
-        #endregion
+        #endregion Databases
 
         #region Collections
 
         public const string CurrencyCollection = "currency";
         public const string CurrencyTSCollection = "currency";
 
-        #endregion
-
+        #endregion Collections
     }
 }

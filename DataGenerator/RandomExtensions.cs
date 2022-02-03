@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace DataGenerator
 {
     public static class RandomExtensions

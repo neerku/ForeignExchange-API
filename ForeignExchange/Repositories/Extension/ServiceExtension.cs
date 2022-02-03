@@ -1,13 +1,7 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using ExchangeDataGenerator.Generator;
-using ExchangeModels;
-using ForeignExchange.SignalR;
-using ForeignExchange.SignalR.Hubs;
-using Microsoft.AspNetCore.SignalR;
+﻿using ExchangeDataGenerator.Generator;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
+using System.Threading.Tasks;
 
 namespace ForeignExchange.Repositories.Extension
 {
@@ -23,7 +17,6 @@ namespace ForeignExchange.Repositories.Extension
                 return client;
             });
 
-
             services.AddScoped<CurrencyRepository>();
             services.AddScoped<CurrencyTSRepository>();
 
@@ -31,10 +24,8 @@ namespace ForeignExchange.Repositories.Extension
             var currencyTSRepository = serviceProvider.GetService<CurrencyTSRepository>();
 
             var generateBTC = new BTCCurrencyTimeSeries(client);
-            
+
             Task.Run(() => generateBTC.GenerateBTCCurrencyData());
-
-        } 
-
+        }
     }
 }

@@ -1,76 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using ExchangeModels;
+﻿using ExchangeModels;
 using ExchangeModels.Projections;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ForeignExchange.Repositories
 {
     public class CurrencyTSRepository
     {
-        private readonly IMongoCollection<CurrencyTS> mongoCollection;
         private readonly IMongoClient mongoClient;
-
+        private readonly IMongoCollection<CurrencyTS> mongoCollection;
 
         public CurrencyTSRepository(IMongoClient client)
         {
             mongoClient = client;
             mongoCollection = mongoClient.GetDatabase(APIConstant.CurrencyDatabase)
                 .GetCollection<CurrencyTS>(APIConstant.CurrencyTSCollection);
-        }
-
-        public async Task<List<CurrencyCandlestick>> GetDataAsync(string fromAndTocurrency)
-        {
-
-            var matchStage = new BsonDocument("$match",
-                new BsonDocument("symbol", fromAndTocurrency));
-
-            var groupStage = new BsonDocument("$group",
-                new BsonDocument
-                    {
-                            { "_id",
-                new BsonDocument
-                        {
-                            { "symbol", "$symbol" },
-                            { "time",
-                new BsonDocument("$dateTrunc",
-                new BsonDocument
-                                {
-                                    { "date", "$time" },
-                                    { "unit", "second" },
-                                    { "binSize", 5 }
-                                }) }
-                        } },
-                        { "high",
-                new BsonDocument("$max", "$price") },
-                        { "low",
-                new BsonDocument("$min", "$price") },
-                        { "open",
-                new BsonDocument("$first", "$price") },
-                        { "close",
-                new BsonDocument("$last", "$price") }
-                    });
-
-            var sortStage = new BsonDocument("$sort",
-                new BsonDocument("_id.time", -1));
-
-            var pipeline = new[]
-            {
-                matchStage,
-                groupStage,
-                sortStage
-
-            };
-
-            var result = await mongoCollection
-                .Aggregate(PipelineDefinition<CurrencyTS, CurrencyCandlestick>.Create(pipeline))
-                .ToListAsync();
-
-
-            return result;
-
         }
 
         public async Task<List<CurrencyCandlestick>> GetCandleDataAsync(string[] currencyList)
@@ -122,16 +69,61 @@ namespace ForeignExchange.Repositories
                 groupStage,
                 sortStage,
                 new BsonDocument("$limit", 500)
-
             };
 
             var result = await mongoCollection
                 .Aggregate(PipelineDefinition<CurrencyTS, CurrencyCandlestick>.Create(pipeline))
                 .ToListAsync();
 
+            return result;
+        }
+
+        public async Task<List<CurrencyCandlestick>> GetDataAsync(string fromAndTocurrency)
+        {
+            var matchStage = new BsonDocument("$match",
+                new BsonDocument("symbol", fromAndTocurrency));
+
+            var groupStage = new BsonDocument("$group",
+                new BsonDocument
+                    {
+                            { "_id",
+                new BsonDocument
+                        {
+                            { "symbol", "$symbol" },
+                            { "time",
+                new BsonDocument("$dateTrunc",
+                new BsonDocument
+                                {
+                                    { "date", "$time" },
+                                    { "unit", "second" },
+                                    { "binSize", 5 }
+                                }) }
+                        } },
+                        { "high",
+                new BsonDocument("$max", "$price") },
+                        { "low",
+                new BsonDocument("$min", "$price") },
+                        { "open",
+                new BsonDocument("$first", "$price") },
+                        { "close",
+                new BsonDocument("$last", "$price") }
+                    });
+
+            var sortStage = new BsonDocument("$sort",
+                new BsonDocument("_id.time", -1));
+
+            var pipeline = new[]
+            {
+                matchStage,
+                groupStage,
+                sortStage
+            };
+
+            var result = await mongoCollection
+                .Aggregate(PipelineDefinition<CurrencyTS, CurrencyCandlestick>.Create(pipeline))
+                .ToListAsync();
 
             return result;
-
         }
 
         public async Task<List<CurrencyEMA>> GetEMADataAsync(string[] currencyList)
@@ -276,16 +268,13 @@ namespace ForeignExchange.Repositories
                 setWStage,
                 setStage,
                 new BsonDocument("$limit", 500)
-
             };
 
             var result = await mongoCollection
                 .Aggregate(PipelineDefinition<CurrencyTS, CurrencyEMA>.Create(pipeline))
                 .ToListAsync();
 
-
             return result;
-
         }
     }
 }
