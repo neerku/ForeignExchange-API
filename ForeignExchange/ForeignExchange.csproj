@@ -13,30 +13,16 @@
     <None Remove="MongoDB.Driver" />
     <None Remove="Repositories\Extension\" />
     <None Remove="Repositories\Interfaces\" />
-    <None Remove="SignalR\" />
-    <None Remove="SignalR\Hubs\" />
-    <None Remove="SignalR\Subscriptions \" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
     <Folder Include="Views\" />
     <Folder Include="Repositories\Extension\" />
     <Folder Include="Repositories\Interfaces\" />
-    <Folder Include="SignalR\" />
-    <Folder Include="SignalR\Hubs\" />
-    <Folder Include="SignalR\Subscriptions \" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="MongoDB.Bson" Version="2.14.1" />
     <PackageReference Include="MongoDB.Driver" Version="2.14.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ExchangeModels\ExchangeModels.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\DataGenerator\DataGenerator.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
   </ItemGroup>
 </Project>
