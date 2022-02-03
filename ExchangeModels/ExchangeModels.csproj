@@ -7,9 +7,13 @@
   <ItemGroup>
     <None Remove="MongoDB.Bson" />
     <None Remove="MongoDB.Driver.Core" />
+    <None Remove="Projections\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MongoDB.Bson" Version="2.14.1" />
     <PackageReference Include="MongoDB.Driver.Core" Version="2.14.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Projections\" />
   </ItemGroup>
 </Project>
