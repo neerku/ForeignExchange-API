@@ -11,6 +11,7 @@
     <Content Remove="Repositories\Interfaces\**" />
     <EmbeddedResource Remove="Repositories\Interfaces\**" />
     <None Remove="Repositories\Interfaces\**" />
+    <None Remove="Logger\" />
   </ItemGroup>
 
 
@@ -25,6 +26,7 @@
   <ItemGroup>
     <Folder Include="Repositories\" />
     <Folder Include="Repositories\Extension\" />
+    <Folder Include="Logger\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.15.0" />

@@ -2,8 +2,10 @@
 using ForeignExchange.Repositories;
 using ForeignExchange.SignalR;
 using ForeignExchange.SignalR.Hubs;
+using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.Logging;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,11 +20,13 @@ namespace ForeignExchange.Controllers
         private static bool IsSubscriptionRunning = false;
         private readonly CurrencyTSRepository _currencyTSRepository;
         private readonly IHubContext<CurrencyHub> _hub;
+        private readonly TelemetryClient _telemetryClient; 
 
-        public CurrencyController(CurrencyTSRepository currencyTSRepository, IHubContext<CurrencyHub> hub)
+            public CurrencyController(CurrencyTSRepository currencyTSRepository, IHubContext<CurrencyHub> hub, TelemetryClient telemetryClient)
         {
             _currencyTSRepository = currencyTSRepository;
             _hub = hub;
+            _telemetryClient = telemetryClient;
         }
 
         [HttpGet]
