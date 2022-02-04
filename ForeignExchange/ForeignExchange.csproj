@@ -6,6 +6,13 @@
     <ApplicationInsightsResourceId>/subscriptions/51b41f4e-ff9e-4b5f-8aa4-dee6beeacd96/resourceGroups/neerku/providers/microsoft.insights/components/peerislandsexchange</ApplicationInsightsResourceId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Repositories\Interfaces\**" />
+    <Content Remove="Repositories\Interfaces\**" />
+    <EmbeddedResource Remove="Repositories\Interfaces\**" />
+    <None Remove="Repositories\Interfaces\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <None Remove="Repositories\" />
@@ -18,7 +25,6 @@
   <ItemGroup>
     <Folder Include="Repositories\" />
     <Folder Include="Repositories\Extension\" />
-    <Folder Include="Repositories\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.15.0" />
