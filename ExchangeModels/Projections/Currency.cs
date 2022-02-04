@@ -1,11 +1,10 @@
-﻿using System;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 
 namespace ExchangeModels.Projections
 {
     public class Currency
     {
-        
         [BsonElement("price")]
         public double Price { get; set; }
 

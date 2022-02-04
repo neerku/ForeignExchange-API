@@ -12,6 +12,7 @@ namespace ForeignExchange
                     webBuilder.UseStartup<Startup>();
                 });
 
+        //main
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();

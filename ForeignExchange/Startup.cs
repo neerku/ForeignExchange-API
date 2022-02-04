@@ -17,6 +17,7 @@ namespace ForeignExchange
 
         public IConfiguration Configuration { get; }
 
+        //resolved configurations
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -28,7 +29,6 @@ namespace ForeignExchange
                 // check https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            
 
             app.UseHttpsRedirection();
 
