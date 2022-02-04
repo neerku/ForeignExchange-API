@@ -9,5 +9,8 @@ namespace ExchangeModels.Projections
 
         [BsonElement("lowest")]
         public double Lowest { get; set; }
+
+        [BsonElement("_id")]
+        public string Symbol { get; set; }
     }
 }

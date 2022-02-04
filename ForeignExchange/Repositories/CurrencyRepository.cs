@@ -8,6 +8,10 @@ namespace ForeignExchange.Repositories
         private readonly IMongoCollection<Currency> currencyCollection;
         private readonly IMongoClient mongoClient;
 
+        /// <summary>
+        /// currency repository
+        /// </summary>
+        /// <param name="client"></param>
         public CurrencyRepository(IMongoClient client)
         {
             mongoClient = client;

@@ -97,4 +97,10 @@
   <ItemGroup>
     <Content Remove="C:\Users\sampa\.nuget\packages\mongodb.driver.core\2.14.1\build\..\runtimes\win\native\snappy64.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="C:\Users\sampa\.nuget\packages\mongodb.driver.core\2.14.1\build\..\runtimes\osx\native\libsnappy64.dylib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="C:\Users\sampa\.nuget\packages\mongodb.driver.core\2.14.1\build\..\runtimes\osx\native\libsnappy64.dylib" />
+  </ItemGroup>
 </Project>

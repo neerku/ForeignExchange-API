@@ -9,6 +9,11 @@ namespace ForeignExchange.Repositories.Extension
     {
         public static MongoClient client;
 
+        /// <summary>
+        /// add data access services async
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="mongoUri"></param>
         public static void AddDataAccessServicesAsync(this IServiceCollection services, string mongoUri)
         {
             client = new MongoClient(mongoUri);
@@ -24,7 +29,6 @@ namespace ForeignExchange.Repositories.Extension
             var currencyTSRepository = serviceProvider.GetService<CurrencyTSRepository>();
 
             var generateBTC = new BTCCurrencyTimeSeries(client);
-
             Task.Run(() => generateBTC.GenerateBTCCurrencyData());
         }
     }

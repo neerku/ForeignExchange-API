@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 
 namespace ExchangeModels.Projections
 {
@@ -21,5 +22,8 @@ namespace ExchangeModels.Projections
 
         [BsonElement("sma_3")]
         public double SMA_3 { get; set; }
+
+        [BsonElement("time")]
+        public DateTime Time { get; set; } = new DateTime();
     }
 }

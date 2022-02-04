@@ -27,6 +27,10 @@ namespace ExchangeDataGenerator.Generator
             return roundedDouble;
         }
 
+        /// <summary>
+        /// generate btc currency data
+        /// </summary>
+        /// <returns></returns>
         public async Task GenerateBTCCurrencyData()
         {
             try
@@ -100,6 +104,7 @@ namespace ExchangeDataGenerator.Generator
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+                throw;
             }
         }
     }

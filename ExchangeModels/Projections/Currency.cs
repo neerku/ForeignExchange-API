@@ -1,20 +1,10 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using System;
 
-namespace ExchangeModels
+namespace ExchangeModels.Projections
 {
-    public class CurrencyTS
+    public class Currency
     {
-        private string _id;
-
-        [BsonElement("_id")]
-        [BsonId]
-        public string Name
-        {
-            get { return this._id; }
-            set { this._id = value; }
-        }
-
         [BsonElement("price")]
         public double Price { get; set; }
 

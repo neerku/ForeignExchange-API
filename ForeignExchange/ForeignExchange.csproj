@@ -11,6 +11,7 @@
     <Content Remove="Repositories\Interfaces\**" />
     <EmbeddedResource Remove="Repositories\Interfaces\**" />
     <None Remove="Repositories\Interfaces\**" />
+    <None Remove="Logger\" />
   </ItemGroup>
 
 
