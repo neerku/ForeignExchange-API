@@ -24,6 +24,6 @@ namespace ExchangeModels.Projections
         public double SMA_3 { get; set; }
 
         [BsonElement("time")]
-        public DateTime Time { get; set; } = new DateTime();
+        public DateTime Time { get; set; } = DateTime.UtcNow;
     }
 }

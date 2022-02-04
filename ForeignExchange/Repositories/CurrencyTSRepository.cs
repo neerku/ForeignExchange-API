@@ -13,7 +13,6 @@ namespace ForeignExchange.Repositories
     public class CurrencyTSRepository
     {
         private readonly Log _logger;
-        private readonly TelemetryClient _telemetryClient;
 
         private readonly BsonDocument GroupStage = new BsonDocument("$group",
                 new BsonDocument
@@ -44,12 +43,12 @@ namespace ForeignExchange.Repositories
         private readonly IMongoClient mongoClient;
         private readonly IMongoCollection<CurrencyTS> mongoCollection;
 
-        public CurrencyTSRepository(IMongoClient client)
+        public CurrencyTSRepository(IMongoClient client, TelemetryClient telemetryClient)
         {
             mongoClient = client;
             mongoCollection = mongoClient.GetDatabase(APIConstant.CurrencyDatabase)
                 .GetCollection<CurrencyTS>(APIConstant.CurrencyTSCollection);
-            _logger = new Log(_telemetryClient);
+            _logger = new Log(telemetryClient);
         }
 
         /// <summary>

@@ -25,8 +25,6 @@ namespace ForeignExchange.Repositories.Extension
             services.AddScoped<CurrencyRepository>();
             services.AddScoped<CurrencyTSRepository>();
 
-            ServiceProvider serviceProvider = services.BuildServiceProvider();
-            var currencyTSRepository = serviceProvider.GetService<CurrencyTSRepository>();
 
             var generateBTC = new BTCCurrencyTimeSeries(client);
             Task.Run(() => generateBTC.GenerateBTCCurrencyData());

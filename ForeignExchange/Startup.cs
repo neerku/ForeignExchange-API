@@ -30,6 +30,7 @@ namespace ForeignExchange
                 app.UseHsts();
             }
 
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -52,6 +53,8 @@ namespace ForeignExchange
             services.AddDataAccessServicesAsync(mongoUri);
             services.AddControllers();
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
+           
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
