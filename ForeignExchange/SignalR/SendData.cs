@@ -22,6 +22,7 @@ namespace ForeignExchange.SignalR
             StartSendingData();
 
         }
+
         private void StartSendingData()
         {
             Task.Run(() => SendCandleData());
@@ -64,8 +65,8 @@ namespace ForeignExchange.SignalR
         {
             while (true)
             {
-                var data = await _currencyTSRepository.GetMinMaxDataAsync(Constants.CurrencySymbol);
-                await _hub.Clients.All.SendAsync("CurrencyMinMax", data);
+                var data = await _currencyTSRepository.GetDataAsync(Constants.CurrencySymbol);
+                await _hub.Clients.All.SendAsync("Currency", data);
                 Thread.Sleep(2000);
             }
         }
