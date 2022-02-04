@@ -23,5 +23,7 @@ namespace ExchangeModels
 
         [BsonElement("time")]
         public DateTime Time { get; set; }
+
+
     }
 }

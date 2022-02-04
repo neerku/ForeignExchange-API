@@ -28,13 +28,7 @@ namespace ForeignExchange
                 // check https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
-            app.UseCors(builder => builder
-               .WithOrigins("http://localhost:3000")
-               .AllowAnyMethod()
-               .AllowAnyHeader()
-               .AllowCredentials()
-            );
+            
 
             app.UseHttpsRedirection();
 

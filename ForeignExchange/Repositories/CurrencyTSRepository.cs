@@ -134,7 +134,8 @@ namespace ForeignExchange.Repositories
             var matchStage = new BsonDocument("$match",
     new BsonDocument
         {
-            { "symbol", "BTC-USD" },
+            { "symbol",
+    new BsonDocument("$in",currencyArray) },
             { "time",
     new BsonDocument("$gte",
     new DateTime(2022, 1, 30, 12, 30, 46)) }
@@ -266,8 +267,7 @@ namespace ForeignExchange.Repositories
                 sortStage,
                 projectStage,
                 setWStage,
-                setStage,
-                new BsonDocument("$limit", 500)
+                setStage
             };
 
             var result = await mongoCollection
@@ -285,7 +285,8 @@ namespace ForeignExchange.Repositories
             var matchStage = new BsonDocument("$match",
     new BsonDocument
         {
-            { "symbol", "BTC-USD" },
+            { "symbol",
+    new BsonDocument("$in",currencyArray) },
             { "time",
     new BsonDocument("$gte",
     new DateTime(2022, 1, 30, 12, 30, 46)) }

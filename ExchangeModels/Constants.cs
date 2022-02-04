@@ -16,7 +16,7 @@
         #endregion Collections
 
         public static readonly string[] CurrencySymbol = new[]
-      {
+        {
             "BTC-USD","BTC-GBP","BTC-INR","BTC-KYD","BTC-AUD","BTC-CNY","BTC-NZD","BTC-EUR","BTC-SGD","BTC-BRL"
         };
     }
